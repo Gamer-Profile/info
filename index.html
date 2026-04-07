@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <meta name="description" content="موقع شخصي عن محمد، جيمر ومبرمج، يحتوي على مهاراته، برمجته، وألعابه المفضلة مثل ماين كرافت وفورت نايت.">
+    <meta name="keywords" content="محمد, جيمر, موقع تعريف محمد, برمجة, ألعاب, ماين كرافت, فورت نايت, ببجي, فري فاير">
+    <meta name="author" content="Mohammad">
+
+    <title>موقع تعريف محمد الجيمر — برمجة وألعاب</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            direction: rtl;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px 30px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: fadeInDown 2s;
+            color: #87CEFA;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #a0c4ff;
+            animation: fadeInUp 2s;
+            margin-top: 10px;
+        }
+
+        @keyframes fadeInDown {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes fadeInUp {
+            from {opacity: 0; transform: translateY(50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            margin: 20px auto;
+            display: block;
+            animation: rotateImg 5s linear infinite;
+        }
+
+        @keyframes rotateImg {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        nav button {
+            background: #ff4d6d;
+            border: none;
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        nav button:hover {
+            background: #6a11cb;
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        section p, section ul {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        section ul li {
+            background: rgba(255,255,255,0.1);
+            margin: 10px auto;
+            padding: 15px;
+            border-radius: 15px;
+            max-width: 400px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        section ul li:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ستايل الفورم الجديد */
+        #question form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        #question input, #question textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        #question button {
+            background: #ff4d6d;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #question button:hover {
+            background: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        footer a {
+            color: #00fff7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>موقع ويب تعريف عني</h1>
+        <p>اسمي: محمد<br>من: سوريا</p>
+        <img src="Gamer.png" alt="صورة محمد" class="profile-img">
+    </header>
+
+    <nav>
+        <button onclick="scrollToSection('skills')">مواهبي</button>
+        <button onclick="scrollToSection('tech')">مجال البرمجة والتكنولوجيا</button>
+        <button onclick="scrollToSection('games')">الألعاب المفضلة</button>
+        <button onclick="scrollToSection('question')">اسألني</button>
+        <button onclick="scrollToSection('contact')">التواصل معي</button>
+    </nav>
+
+    <section id="skills">
+        <h2>مواهبي</h2>
+        <ul>
+            <li>البرمجة بلغة JavaScript, Python, HTML & CSS</li>
+            <li>تصميم واجهات المستخدم UI/UX</li>
+            <li>تحليل وحل المشكلات التقنية</li>
+            <li>التعلم السريع واستكشاف تقنيات جديدة</li>
+        </ul>
+    </section>
+
+    <section id="tech">
+        <h2>مجال البرمجة والتكنولوجيا</h2>
+        <ul>
+            <li>أنظمة الذكاء الاصطناعي</li>
+            <li>تطوير مواقع ويب ديناميكية</li>
+            <li>تطوير تطبيقات الهواتف المحمولة</li>
+            <li>استكشاف الألعاب والتقنيات الحديثة</li>
+        </ul>
+    </section>
+
+    <section id="games">
+        <h2>الألعاب المفضلة</h2>
+        <ul>
+            <li>ماين كرافت</li>
+            <li>فري فاير</li>
+            <li>فورت نايت</li>
+            <li>ببجي</li>
+        </ul>
+    </section>
+
+    <!-- قسم السؤال الجديد -->
+    <section id="question">
+        <h2>💬 اسألني</h2>
+        <p>يمكنك كتابة سؤالك وسأرد عليك قريباً!</p>
+
+        <form action="https://formspree.io/f/mykbodod" method="POST">
+            <label>الاسم:</label>
+            <input type="text" name="name" placeholder="اكتب اسمك" required>
+
+            <label>البريد الإلكتروني:</label>
+            <input type="email" name="email" placeholder="example@email.com" required>
+
+            <label>سؤالك:</label>
+            <textarea name="message" rows="5" placeholder="اكتب سؤالك هنا..." required></textarea>
+
+            <br>
+            <button type="submit">إرسال السؤال</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>التواصل معي</h2>
+        <p>يمكنك مراسلتي على البريد الإلكتروني:</p>
+        <p><a href="mailto:gamermohamaad2015@gmail.com" style="color:#00ff00; font-weight:bold;">gamermohamaad2015@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق والنشر محفوظة لجيمر</p>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            section.scrollIntoView({behavior: 'smooth'});
+        }
+    </script>
+
+</body>
+</html>
