@@ -59,7 +59,6 @@
             margin: 20px auto;
             display: block;
             animation: rotateImg 5s linear infinite;
-            object-fit: cover;
         }
 
         @keyframes rotateImg {
@@ -103,6 +102,11 @@
             color: #ffd700;
         }
 
+        section p, section ul {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
         section ul {
             list-style: none;
             padding: 0;
@@ -122,62 +126,137 @@
             background: rgba(255,255,255,0.2);
         }
 
+        /* ستايل الفورم الجديد */
+        #question form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        #question input, #question textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        #question button {
+            background: #ff4d6d;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #question button:hover {
+            background: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        footer a {
+            color: #00fff7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         html {
             scroll-behavior: smooth;
         }
     </style>
 </head>
-
 <body>
 
-<header>
-    <h1>موقع ويب تعريف عني</h1>
-    <p>اسمي: محمد<br>من: سوريا</p>
+    <header>
+        <h1>موقع ويب تعريف عني</h1>
+        <p>اسمي: محمد<br>من: سوريا</p>
+        <img src="Gamer.png" alt="صورة محمد" class="profile-img">
+    </header>
 
-    <!-- ✅ الصورة -->
-    <img src="Gamer-profile.jpg" alt="صورة محمد" class="profile-img">
-</header>
+    <nav>
+        <button onclick="scrollToSection('skills')">مواهبي</button>
+        <button onclick="scrollToSection('tech')">مجال البرمجة والتكنولوجيا</button>
+        <button onclick="scrollToSection('games')">الألعاب المفضلة</button>
+        <button onclick="scrollToSection('question')">اسألني</button>
+        <button onclick="scrollToSection('contact')">التواصل معي</button>
+    </nav>
 
-<nav>
-    <button onclick="scrollToSection('skills')">مواهبي</button>
-    <button onclick="scrollToSection('tech')">مجال البرمجة والتكنولوجيا</button>
-    <button onclick="scrollToSection('games')">الألعاب المفضلة</button>
-</nav>
+    <section id="skills">
+        <h2>مواهبي</h2>
+        <ul>
+            <li>البرمجة بلغة JavaScript, Python, HTML & CSS</li>
+            <li>تصميم واجهات المستخدم UI/UX</li>
+            <li>تحليل وحل المشكلات التقنية</li>
+            <li>التعلم السريع واستكشاف تقنيات جديدة</li>
+        </ul>
+    </section>
 
-<section id="skills">
-    <h2>مواهبي</h2>
-    <ul>
-        <li>البرمجة بلغة JavaScript, Python, HTML & CSS</li>
-        <li>تصميم واجهات المستخدم UI/UX</li>
-        <li>تحليل وحل المشكلات التقنية</li>
-        <li>التعلم السريع واستكشاف تقنيات جديدة</li>
-    </ul>
-</section>
+    <section id="tech">
+        <h2>مجال البرمجة والتكنولوجيا</h2>
+        <ul>
+            <li>أنظمة الذكاء الاصطناعي</li>
+            <li>تطوير مواقع ويب ديناميكية</li>
+            <li>تطوير تطبيقات الهواتف المحمولة</li>
+            <li>استكشاف الألعاب والتقنيات الحديثة</li>
+        </ul>
+    </section>
 
-<section id="tech">
-    <h2>مجال البرمجة والتكنولوجيا</h2>
-    <ul>
-        <li>أنظمة الذكاء الاصطناعي</li>
-        <li>تطوير مواقع ويب ديناميكية</li>
-        <li>تطوير تطبيقات الهواتف المحمولة</li>
-    </ul>
-</section>
+    <section id="games">
+        <h2>الألعاب المفضلة</h2>
+        <ul>
+            <li>ماين كرافت</li>
+            <li>فري فاير</li>
+            <li>فورت نايت</li>
+            <li>ببجي</li>
+        </ul>
+    </section>
 
-<section id="games">
-    <h2>الألعاب المفضلة</h2>
-    <ul>
-        <li>ماين كرافت</li>
-        <li>فري فاير</li>
-        <li>فورت نايت</li>
-        <li>ببجي</li>
-    </ul>
-</section>
+    <!-- قسم السؤال الجديد -->
+    <section id="question">
+        <h2>💬 اسألني</h2>
+        <p>يمكنك كتابة سؤالك وسأرد عليك قريباً!</p>
 
-<script>
-function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-}
-</script>
+        <form action="https://formspree.io/f/mykbodod" method="POST">
+            <label>الاسم:</label>
+            <input type="text" name="name" placeholder="اكتب اسمك" required>
+
+            <label>البريد الإلكتروني:</label>
+            <input type="email" name="email" placeholder="example@email.com" required>
+
+            <label>سؤالك:</label>
+            <textarea name="message" rows="5" placeholder="اكتب سؤالك هنا..." required></textarea>
+
+            <br>
+            <button type="submit">إرسال السؤال</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>التواصل معي</h2>
+        <p>يمكنك مراسلتي على البريد الإلكتروني:</p>
+        <p><a href="mailto:gamermohamaad2015@gmail.com" style="color:#00ff00; font-weight:bold;">gamermohamaad2015@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق والنشر محفوظة لجيمر</p>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            section.scrollIntoView({behavior: 'smooth'});
+        }
+    </script>
 
 </body>
 </html>
