@@ -1,1287 +1,746 @@
+```html
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>محمد | Portfolio</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Tahoma, sans-serif;
-      background: #07111f;
-      color: #ffffff;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0, 153, 255, 0.15), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(120, 0, 255, 0.12), transparent 30%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* Language Screen */
-
-    #languageScreen {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #07111f;
-      padding: 20px;
-    }
-
-    .language-box {
-      width: min(550px, 100%);
-      padding: 45px 30px;
-      text-align: center;
-      border-radius: 24px;
-      background: rgba(16, 30, 50, 0.95);
-      border: 1px solid rgba(0, 153, 255, 0.3);
-      box-shadow: 0 0 40px rgba(0, 153, 255, 0.15);
-    }
-
-    .language-logo {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 20px;
-      display: grid;
-      place-items: center;
-      border-radius: 25px;
-      font-size: 34px;
-      font-weight: bold;
-      background: linear-gradient(135deg, #008cff, #6d3cff);
-    }
-
-    .language-box h1 {
-      margin-bottom: 10px;
-    }
-
-    .language-box p {
-      color: #aab7c7;
-      margin-bottom: 30px;
-    }
-
-    .language-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .language-btn,
-    .option-btn {
-      border: 1px solid rgba(0, 153, 255, 0.35);
-      background: rgba(255, 255, 255, 0.06);
-      color: white;
-      padding: 15px 20px;
-      border-radius: 14px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    .language-btn {
-      min-width: 180px;
-    }
-
-    .language-btn:hover,
-    .option-btn:hover {
-      transform: translateY(-4px);
-      background: rgba(0, 140, 255, 0.18);
-      border-color: #008cff;
-    }
-
-    /* Navigation */
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(7, 17, 31, 0.85);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .nav-container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 18px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #0099ff;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .nav-links a {
-      color: #c5d0dc;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #0099ff;
-    }
-
-    .lang-switch {
-      border: none;
-      background: rgba(0, 140, 255, 0.15);
-      color: white;
-      padding: 9px 14px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    /* Hero */
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 140px 20px 80px;
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 50px;
-      margin-bottom: 25px;
-      color: #67baff;
-      background: rgba(0, 140, 255, 0.1);
-      border: 1px solid rgba(0, 140, 255, 0.25);
-    }
-
-    .hero h1 {
-      font-size: clamp(50px, 9vw, 90px);
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(90deg, #00a2ff, #8d5cff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      color: #aab7c7;
-      line-height: 1.9;
-      font-size: 19px;
-    }
-
-    .hero-buttons {
-      margin-top: 35px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 24px;
-      border-radius: 12px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #008cff, #6445ff);
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    /* Sections */
-
-    section {
-      padding: 100px 25px;
-    }
-
-    .container {
-      max-width: 1150px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 55px;
-    }
-
-    .section-title h2 {
-      font-size: 38px;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: #9eabba;
-    }
-
-    /* About */
-
-    .about-card {
-      padding: 35px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #b8c4d0;
-      line-height: 2;
-    }
-
-    /* Cards */
-
-    .skills-grid,
-    .games-grid,
-    .future-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 22px;
-    }
-
-    .skill-card,
-    .game-card,
-    .future-card {
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      background: rgba(255, 255, 255, 0.04);
-      padding: 30px 22px;
-      border-radius: 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .skill-card:hover,
-    .game-card:hover,
-    .future-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 153, 255, 0.6);
-      box-shadow: 0 18px 40px rgba(0, 140, 255, 0.12);
-    }
-
-    .skill-icon,
-    .game-icon,
-    .future-icon {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
-
-    .skill-card h3,
-    .game-card h3,
-    .future-card h3 {
-      margin-bottom: 12px;
-    }
-
-    .skill-card p,
-    .game-card p,
-    .future-card p {
-      color: #aab7c7;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    /* Contact */
-
-    .contact-box {
-      text-align: center;
-      padding: 50px 25px;
-      border-radius: 25px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .contact-info {
-      margin: 20px 0 30px;
-      color: #aab7c7;
-      line-height: 2;
-    }
-
-    .contact-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .contact-btn {
-      min-width: 170px;
-      padding: 15px;
-      border-radius: 13px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-4px);
-    }
-
-    .phone {
-      background: #1687ff;
-    }
-
-    .whatsapp {
-      background: #128c7e;
-    }
-
-    .email {
-      background: #673de6;
-    }
-
-    /* Modal */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 5000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      width: min(650px, 100%);
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 35px;
-      border-radius: 24px;
-      background: #0d1b2a;
-      border: 1px solid rgba(0, 153, 255, 0.35);
-      position: relative;
-      animation: modalAnimation 0.3s ease;
-    }
-
-    @keyframes modalAnimation {
-      from {
-        opacity: 0;
-        transform: translateY(25px) scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 15px;
-      inset-inline-end: 15px;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(255, 255, 255, 0.08);
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .modal-icon {
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
-
-    .modal-content h2 {
-      margin-bottom: 18px;
-    }
-
-    .modal-content p {
-      color: #b7c4d1;
-      line-height: 1.9;
-      margin-bottom: 25px;
-    }
-
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 15px;
-    }
-
-    .option-btn {
-      display: block;
-      text-align: center;
-    }
-
-    .option-btn small {
-      display: block;
-      margin-top: 6px;
-      color: #9eabba;
-    }
-
-    footer {
-      padding: 25px;
-      text-align: center;
-      color: #778595;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    @media (max-width: 700px) {
-      .nav-container {
-        flex-direction: column;
-      }
-
-      .nav-links {
-        gap: 11px;
-      }
-
-      .hero {
-        padding-top: 210px;
-      }
-
-      section {
-        padding: 75px 18px;
-      }
-
-      .section-title h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد | موقعي الشخصي</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0b0f19;
+            color: white;
+            line-height: 1.7;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #20283a;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #4da6ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #4da6ff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 40px;
+            background:
+                radial-gradient(circle at top, #182744, #0b0f19 60%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #4da6ff;
+        }
+
+        .hero p {
+            color: #b7c0d4;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            background: #1677ff;
+            transition: 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #3890ff;
+        }
+
+        .btn.secondary {
+            background: #202b40;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #9da8bc;
+            margin-bottom: 45px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #121927;
+            border: 1px solid #222d42;
+            border-radius: 18px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #358dff;
+            box-shadow: 0 10px 30px rgba(0, 120, 255, 0.12);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #58aaff;
+        }
+
+        .card p {
+            color: #aeb8ca;
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .skill {
+            background: #182338;
+            border: 1px solid #283854;
+            padding: 10px 18px;
+            border-radius: 50px;
+            color: #cbd8ee;
+        }
+
+        .game-card {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card .game-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .game-card button {
+            margin-top: 18px;
+            width: 100%;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #121927, #18253a);
+            border: 1px solid #293852;
+            border-radius: 20px;
+            padding: 45px 25px;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin: 25px 0;
+            font-size: 19px;
+            color: #d0d9e9;
+        }
+
+        footer {
+            border-top: 1px solid #20283a;
+            text-align: center;
+            padding: 30px 20px;
+            color: #8490a6;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 600px;
+            background: #121927;
+            border: 1px solid #2b3a55;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            text-align: center;
+        }
+
+        .close {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aeb8ca;
+        }
+
+        .close:hover {
+            color: white;
+        }
+
+        .store-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .store-button {
+            background: #202c42;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .store-button:hover {
+            background: #287fe0;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 10px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 70px 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Language Selection -->
+<header>
+    <nav>
+        <div class="logo">محمد</div>
 
-  <div id="languageScreen">
-    <div class="language-box">
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">عني</a></li>
+            <li><a href="#software">Software</a></li>
+            <li><a href="#hardware">Hardware</a></li>
+            <li><a href="#games">الألعاب</a></li>
+            <li><a href="#contact">تواصل</a></li>
+        </ul>
+    </nav>
+</header>
 
-```
-  <div class="language-logo">M</div>
+<main>
 
-  <h1>اختر اللغة / Choose Language</h1>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>مرحباً، أنا <span>محمد</span> 👋</h1>
 
-  <p>اختر اللغة التي تريد استخدامها</p>
+            <p>
+                أهلاً وسهلاً في موقعي الشخصي.
+                أحب التكنولوجيا والبرمجة والألعاب،
+                وأتعلم البرمجة خطوة بخطوة.
+            </p>
 
-  <div class="language-buttons">
-    <button class="language-btn" onclick="setLanguage('ar')">
-      🇸🇦 العربية
-    </button>
+            <div class="buttons">
+                <a class="btn" href="#about">تعرف عليّ</a>
+                <a class="btn secondary" href="#games">شوف ألعابي 🎮</a>
+            </div>
+        </div>
+    </section>
 
-    <button class="language-btn" onclick="setLanguage('en')">
-      🇬🇧 English
-    </button>
-  </div>
+
+    <section id="about">
+        <h2 class="section-title">عني</h2>
+
+        <p class="section-description">
+            معلومات بسيطة عني واهتماماتي
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>البرمجة</h3>
+                <p>
+                    أتعلم البرمجة شوي شوي وأحب تجربة الأشياء الجديدة
+                    وبناء المواقع والمشاريع التقنية.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🧠</div>
+                <h3>المستقبل</h3>
+                <p>
+                    عندما أكبر أريد أن أتخصص في الأمن السيبراني
+                    أو هندسة المعلوماتية.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎮</div>
+                <h3>الألعاب</h3>
+                <p>
+                    أحب الألعاب وتجربة ألعاب الكمبيوتر والموبايل
+                    والتعرف على التقنيات الموجودة فيها.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="software">
+        <h2 class="section-title">Software 💻</h2>
+
+        <p class="section-description">
+            البرمجيات والبرمجة
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🌐</div>
+                <h3>تطوير المواقع</h3>
+                <p>
+                    أتعلم HTML وCSS وJavaScript وأجرب إنشاء
+                    مواقع وتطبيقات ويب بسيطة.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🤖</div>
+                <h3>التقنية والذكاء الاصطناعي</h3>
+                <p>
+                    أحب تجربة أدوات الذكاء الاصطناعي واستخدامها
+                    في المشاريع والتعلم.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔐</div>
+                <h3>الأمن السيبراني</h3>
+                <p>
+                    من المجالات التي أريد تعلمها والتخصص فيها
+                    مستقبلاً بطريقة قانونية وآمنة.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="skills">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Web Development</span>
+            <span class="skill">Programming</span>
+        </div>
+    </section>
+
+
+    <section id="hardware">
+        <h2 class="section-title">Hardware 🖥️</h2>
+
+        <p class="section-description">
+            الهاردوير والأجهزة
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🖥️</div>
+                <h3>مكونات الكمبيوتر</h3>
+                <p>
+                    ما زلت أتعلم عن الهاردوير ومكونات الكمبيوتر
+                    وكيف تعمل مع بعضها.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">⚙️</div>
+                <h3>التعلم والتجربة</h3>
+                <p>
+                    أتعلم بشكل تدريجي عن المعالجات وكروت الشاشة
+                    والرامات والتخزين وباقي المكونات.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔧</div>
+                <h3>المستقبل</h3>
+                <p>
+                    أريد تطوير معرفتي بالأجهزة والهاردوير
+                    مع الوقت والتجربة.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="games">
+        <h2 class="section-title">ألعابي 🎮</h2>
+
+        <p class="section-description">
+            اضغط على أي لعبة لمعرفة المنصات المتوفرة لها
+        </p>
+
+        <div class="cards">
+
+            <div class="card game-card" onclick="openGame('Minecraft')">
+                <div class="game-icon">⛏️</div>
+                <h3>Minecraft</h3>
+                <p>
+                    لعبة البناء والاستكشاف التي أحبها.
+                </p>
+                <button class="btn">عرض المنصات</button>
+            </div>
+
+            <div class="card game-card" onclick="openGame('Roblox')">
+                <div class="game-icon">🟥</div>
+                <h3>Roblox</h3>
+                <p>
+                    منصة ألعاب تحتوي على الكثير من التجارب المختلفة.
+                </p>
+                <button class="btn">عرض المنصات</button>
+            </div>
+
+            <div class="card game-card" onclick="openGame('Geometry Dash')">
+                <div class="game-icon">🔺</div>
+                <h3>Geometry Dash</h3>
+                <p>
+                    لعبة إيقاع وتحديات سريعة.
+                </p>
+                <button class="btn">عرض المنصات</button>
+            </div>
+
+            <div class="card game-card" onclick="openGame('Blood Strike')">
+                <div class="game-icon">🎯</div>
+                <h3>Blood Strike</h3>
+                <p>
+                    لعبة تصويب وحركة.
+                </p>
+                <button class="btn">عرض المنصات</button>
+            </div>
+
+            <div class="card game-card" onclick="openGame('Fortnite')">
+                <div class="game-icon">🚌</div>
+                <h3>Fortnite</h3>
+                <p>
+                    لعبة تنافسية مليئة بالتحديات.
+                </p>
+                <button class="btn">عرض المنصات</button>
+            </div>
+
+            <div class="card game-card" onclick="openGame('Asphalt 8')">
+                <div class="game-icon">🏎️</div>
+                <h3>Asphalt 8</h3>
+                <p>
+                    لعبة سباقات سيارات.
+                </p>
+                <button class="btn">عرض المنصات</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <h2 class="section-title">تواصل معي 📱</h2>
+
+        <p class="section-description">
+            يمكنك التواصل معي من خلال الرقم أو واتساب
+        </p>
+
+        <div class="contact-box">
+
+            <div class="contact-info">
+                📞 +971 54 178 7173
+            </div>
+
+            <div class="buttons">
+
+                <a
+                    class="btn"
+                    href="tel:+971541787173"
+                >
+                    📞 اتصال
+                </a>
+
+                <a
+                    class="btn"
+                    href="https://wa.me/971541787173"
+                    target="_blank"
+                >
+                    💬 واتساب
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<footer>
+    <p>© 2026 محمد — جميع الحقوق محفوظة</p>
+</footer>
+
+
+<div class="modal" id="gameModal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeGame()">×</span>
+
+        <div class="icon">🎮</div>
+
+        <h2 id="gameTitle">اللعبة</h2>
+
+        <p id="gameDescription">
+            اختر المنصة التي تريد معرفة المزيد عنها.
+        </p>
+
+        <div class="store-buttons">
+
+            <a
+                class="store-button"
+                id="pcButton"
+                href="#"
+                target="_blank"
+            >
+                🖥️ PC
+            </a>
+
+            <a
+                class="store-button"
+                id="mobileButton"
+                href="#"
+                target="_blank"
+            >
+                📱 Mobile
+            </a>
+
+            <a
+                class="store-button"
+                id="iphoneButton"
+                href="#"
+                target="_blank"
+            >
+                🍎 iPhone
+            </a>
+
+            <a
+                class="store-button"
+                id="samsungButton"
+                href="#"
+                target="_blank"
+            >
+                📱 Samsung
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
-```
 
-  </div>
 
-  <!-- Navigation -->
-
-  <nav>
-    <div class="nav-container">
-
-```
-  <div class="logo">
-    <span>M</span>ohammad
-  </div>
-
-  <div class="nav-links">
-    <a href="#home" data-key="navHome">الرئيسية</a>
-    <a href="#about" data-key="navAbout">عني</a>
-    <a href="#skills" data-key="navSkills">المهارات</a>
-    <a href="#games" data-key="navGames">ألعابي</a>
-    <a href="#future" data-key="navFuture">طموحي</a>
-    <a href="#contact" data-key="navContact">التواصل</a>
-
-    <button class="lang-switch" onclick="toggleLanguage()">
-      🌐 <span id="currentLanguage">English</span>
-    </button>
-  </div>
-
-</div>
-```
-
-  </nav>
-
-  <!-- Hero -->
-
-  <section class="hero" id="home">
-    <div class="hero-content">
-
-```
-  <div class="badge" data-key="badge">
-    🚀 مرحبًا بك في موقعي الشخصي
-  </div>
-
-  <h1>
-    <span id="heroName">محمد</span>
-  </h1>
-
-  <p data-key="heroDescription">
-    مهتم بالتكنولوجيا وأتعلم البرمجة خطوة بخطوة.
-  </p>
-
-  <div class="hero-buttons">
-    <a href="#skills" class="btn btn-primary" data-key="heroSkills">
-      استكشف مهاراتي
-    </a>
-
-    <a href="#contact" class="btn btn-secondary" data-key="heroContact">
-      تواصل معي
-    </a>
-  </div>
-
-</div>
-```
-
-  </section>
-
-  <!-- About -->
-
-  <section id="about">
-    <div class="container">
-
-```
-  <div class="section-title">
-    <h2 data-key="aboutTitle">عني</h2>
-    <p data-key="aboutSubtitle">رحلتي في التكنولوجيا والتعلم</p>
-  </div>
-
-  <div class="about-card" data-key="aboutText">
-    أنا مهتم بعالم التكنولوجيا، ولدي اهتمام وخبرة في مجال Software،
-    وأتعلم البرمجة وأطور مهاراتي خطوة بخطوة.
-  </div>
-
-</div>
-```
-
-  </section>
-
-  <!-- Skills -->
-
-  <section id="skills">
-    <div class="container">
-
-```
-  <div class="section-title">
-    <h2 data-key="skillsTitle">المهارات والاهتمامات</h2>
-    <p data-key="skillsSubtitle">اضغط على أي بطاقة لمعرفة المزيد</p>
-  </div>
-
-  <div class="skills-grid">
-
-    <div class="skill-card" onclick="openInfo('software')">
-      <div class="skill-icon">💻</div>
-      <h3 data-key="skill1">Software</h3>
-      <p data-key="skill1desc">اضغط لمعرفة المزيد</p>
-    </div>
-
-    <div class="skill-card" onclick="openInfo('hardware')">
-      <div class="skill-icon">🖥️</div>
-      <h3 data-key="skillHardware">Hardware</h3>
-      <p data-key="hardwareDesc">اضغط لمعرفة المزيد</p>
-    </div>
-
-    <div class="skill-card" onclick="openInfo('programming')">
-      <div class="skill-icon">👨‍💻</div>
-      <h3 data-key="skillProgramming">التعلم البرمجي</h3>
-      <p data-key="programmingDesc">اضغط لمعرفة المزيد</p>
-    </div>
-
-    <div class="skill-card" onclick="openInfo('technology')">
-      <div class="skill-icon">⚙️</div>
-      <h3 data-key="skillTechnology">التكنولوجيا</h3>
-      <p data-key="technologyDesc">اضغط لمعرفة المزيد</p>
-    </div>
-
-  </div>
-
-</div>
-```
-
-  </section>
-
-  <!-- Games -->
-
-  <section id="games">
-    <div class="container">
-
-```
-  <div class="section-title">
-    <h2 data-key="gamesTitle">ألعابي المفضلة</h2>
-    <p data-key="gamesSubtitle">اضغط على اللعبة لاختيار المنصة</p>
-  </div>
-
-  <div class="games-grid">
-
-    <div class="game-card" onclick="openGame('minecraft')">
-      <div class="game-icon">⛏️</div>
-      <h3>Minecraft</h3>
-      <p data-key="minecraftDesc">اضغط لاختيار المنصة</p>
-    </div>
-
-    <div class="game-card" onclick="openGame('bloodstrike')">
-      <div class="game-icon">🎯</div>
-      <h3>Blood Strike</h3>
-      <p data-key="bloodstrikeDesc">اضغط لاختيار المنصة</p>
-    </div>
-
-    <div class="game-card" onclick="openGame('geometrydash')">
-      <div class="game-icon">🟨</div>
-      <h3>Geometry Dash</h3>
-      <p data-key="geometrydashDesc">اضغط لاختيار المنصة</p>
-    </div>
-
-  </div>
-
-</div>
-```
-
-  </section>
-
-  <!-- Future -->
-
-  <section id="future">
-    <div class="container">
-
-```
-  <div class="section-title">
-    <h2 data-key="futureTitle">طموحي المستقبلي</h2>
-    <p data-key="futureSubtitle">اضغط لمعرفة المزيد عن كل مجال</p>
-  </div>
-
-  <div class="future-grid">
-
-    <div class="future-card" onclick="openInfo('cybersecurity')">
-      <div class="future-icon">🔐</div>
-      <h3 data-key="futureCyber">الأمن السيبراني</h3>
-      <p data-key="futureCyberDesc">
-        تعرف على هذا المجال
-      </p>
-    </div>
-
-    <div class="future-card" onclick="openInfo('engineering')">
-      <div class="future-icon">💻</div>
-      <h3 data-key="futureEngineering">
-        هندسة المعلوماتية
-      </h3>
-      <p data-key="futureEngineeringDesc">
-        تعرف على هذا المجال
-      </p>
-    </div>
-
-  </div>
-
-</div>
-```
-
-  </section>
-
-  <!-- Contact -->
-
-  <section id="contact">
-    <div class="container">
-
-```
-  <div class="contact-box">
-
-    <div class="section-title">
-      <h2 data-key="contactTitle">تواصل معي</h2>
-      <p data-key="contactSubtitle">
-        يمكنك التواصل معي عبر الطرق التالية
-      </p>
-    </div>
-
-    <div class="contact-info">
-      <p>📞 +971541787173</p>
-      <p>📧 gamermohamaad2015@gmail.com</p>
-    </div>
-
-    <div class="contact-buttons">
-
-      <a href="tel:+971541787173"
-         class="contact-btn phone"
-         data-key="callButton">
-        📞 اتصال
-      </a>
-
-      <a href="https://wa.me/971541787173"
-         target="_blank"
-         class="contact-btn whatsapp">
-        💬 WhatsApp
-      </a>
-
-      <a href="mailto:gamermohamaad2015@gmail.com"
-         class="contact-btn email">
-        📧 Email
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-```
-
-  </section>
-
-  <footer>
-    <p id="footerText">
-      © 2026 محمد - جميع الحقوق محفوظة
-    </p>
-  </footer>
-
-  <!-- Modal -->
-
-  <div class="modal" id="modal">
-
-```
-<div class="modal-content">
-
-  <button class="close-modal" onclick="closeModal()">
-    ×
-  </button>
-
-  <div id="modalBody"></div>
-
-</div>
-```
-
-  </div>
-
-  <script>
-
-    const modal = document.getElementById("modal");
-    const modalBody = document.getElementById("modalBody");
-
-    function closeModal() {
-      modal.classList.remove("active");
-    }
-
-    modal.addEventListener("click", function(event) {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-
-    /* Information Cards */
-
-    const infoData = {
-
-      software: {
-        icon: "💻",
-        title: "Software",
-        text:
-          "Software يعني البرامج والتطبيقات التي تعمل على الكمبيوتر أو الهاتف. مثل المتصفحات، الألعاب، أنظمة التشغيل والتطبيقات."
-      },
-
-      hardware: {
-        icon: "🖥️",
-        title: "Hardware",
-        text:
-          "Hardware يعني الأجزاء المادية التي يمكنك لمسها في الجهاز، مثل المعالج CPU، الرام RAM، الشاشة، لوحة المفاتيح والقرص."
-      },
-
-      programming: {
-        icon: "👨‍💻",
-        title: "Programming",
-        text:
-          "البرمجة هي كتابة تعليمات وأوامر للكمبيوتر باستخدام لغات برمجة لإنشاء مواقع وتطبيقات وألعاب وبرامج."
-      },
-
-      technology: {
-        icon: "⚙️",
-        title: "Technology",
-        text:
-          "التكنولوجيا تشمل الأجهزة والبرامج والشبكات والأنظمة التي نستخدمها لحل المشاكل وتطوير حياتنا."
-      },
-
-      cybersecurity: {
-        icon: "🔐",
-        title: "Cybersecurity",
-        text:
-          "الأمن السيبراني يهتم بحماية الأنظمة والشبكات والبيانات من المخاطر الرقمية. يعتمد على فهم الشبكات والأنظمة والبرمجة."
-      },
-
-      engineering: {
-        icon: "💻",
-        title: "Information Engineering",
-        text:
-          "هندسة المعلوماتية مجال واسع يشمل البرمجة والأنظمة والشبكات وقواعد البيانات والتقنيات المختلفة."
-      }
-
-    };
-
-
-    function openInfo(type) {
-
-      const item = infoData[type];
-
-      modalBody.innerHTML = `
-        <div class="modal-icon">${item.icon}</div>
-        <h2>${item.title}</h2>
-        <p>${item.text}</p>
-      `;
-
-      modal.classList.add("active");
-
-    }
-
-
-    /* Games */
+<script>
 
     const games = {
 
-      minecraft: {
-        icon: "⛏️",
-        name: "Minecraft"
-      },
+        "Minecraft": {
+            description: "Minecraft متوفرة على عدة منصات.",
+            pc: "https://www.minecraft.net/",
+            mobile: "https://play.google.com/store/search?q=minecraft&c=apps",
+            iphone: "https://apps.apple.com/us/search?term=minecraft",
+        },
 
-      bloodstrike: {
-        icon: "🎯",
-        name: "Blood Strike"
-      },
+        "Roblox": {
+            description: "Roblox منصة ألعاب وتجارب متنوعة.",
+            pc: "https://www.roblox.com/",
+            mobile: "https://play.google.com/store/search?q=roblox&c=apps",
+            iphone: "https://apps.apple.com/us/search?term=roblox",
+            samsung: "https://galaxystore.samsung.com/search?q=roblox"
+        },
 
-      geometrydash: {
-        icon: "🟨",
-        name: "Geometry Dash"
-      }
+        "Geometry Dash": {
+            description: "Geometry Dash لعبة إيقاع وتحديات.",
+            pc: "https://store.steampowered.com/search/?term=Geometry%20Dash",
+            samsung: "https://play.google.com/store/search?q=geometry%20dash&c=apps",
+            iphone: "https://apps.apple.com/us/search?term=geometry%20dash",
+        },
+
+        "Blood Strike": {
+            description: "Blood Strike لعبة تصويب وحركة.",
+            pc: "https://store.steampowered.com/search/?term=BloodStrike",
+            samsung: "https://play.google.com/store/search?q=bloodstrike&c=apps",
+            iphone: "https://apps.apple.com/us/search?term=bloodstrike",
+        },
+
+        "Fortnite": {
+            description: "Fortnite لعبة تنافسية من Epic Games.",
+            pc: "https://store.epicgames.com/",
+            samsung: "https://www.fortnite.com/mobile",
+            iphone: "https://www.fortnite.com/mobile",
+        },
+
+        "Asphalt 8": {
+            description: "Asphalt 8 لعبة سباقات سيارات.",
+            pc: "https://store.steampowered.com/search/?term=Asphalt%208",
+            samsung: "https://play.google.com/store/search?q=asphalt%208&c=apps",
+            iphone: "https://apps.apple.com/us/search?term=asphalt%208",
+        }
 
     };
 
 
-    function openGame(game) {
+    function openGame(gameName) {
 
-      const selectedGame = games[game];
+        const game = games[gameName];
 
-      modalBody.innerHTML = `
-        <div class="modal-icon">
-          ${selectedGame.icon}
-        </div>
-
-        <h2>${selectedGame.name}</h2>
-
-        <p>
-          اختر المنصة التي تريد معرفة طريقة الحصول على اللعبة من خلالها.
-        </p>
-
-        <div class="options-grid">
-
-          <a class="option-btn"
-             href="https://store.steampowered.com"
-             target="_blank">
-            🖥️ PC
-            <small>Steam</small>
-          </a>
-
-          <a class="option-btn"
-             href="https://play.google.com/store"
-             target="_blank">
-            📱 Android
-            <small>Google Play</small>
-          </a>
-
-          <a class="option-btn"
-             href="https://www.apple.com/app-store/"
-             target="_blank">
-            🍎 iPhone
-            <small>App Store</small>
-          </a>
-
-          <a class="option-btn"
-             href="https://www.samsung.com"
-             target="_blank">
-            📱 Samsung
-            <small>Galaxy Store / Google Play</small>
-          </a>
-
-        </div>
-      `;
-
-      modal.classList.add("active");
-
-    }
-
-
-    /* Language */
-
-    const translations = {
-
-      ar: {
-
-        navHome: "الرئيسية",
-        navAbout: "عني",
-        navSkills: "المهارات",
-        navGames: "ألعابي",
-        navFuture: "طموحي",
-        navContact: "التواصل",
-
-        badge:
-          "🚀 مرحبًا بك في موقعي الشخصي",
-
-        heroDescription:
-          "مهتم بالتكنولوجيا وأتعلم البرمجة خطوة بخطوة، وأسعى دائمًا إلى تطوير مهاراتي.",
-
-        heroSkills:
-          "استكشف مهاراتي",
-
-        heroContact:
-          "تواصل معي",
-
-        aboutTitle:
-          "عني",
-
-        aboutSubtitle:
-          "رحلتي في عالم التكنولوجيا والتعلم",
-
-        aboutText:
-          "أنا مهتم بعالم التكنولوجيا ولدي اهتمام وخبرة في مجال Software. أتعلم البرمجة خطوة بخطوة وأسعى باستمرار إلى تطوير نفسي واكتساب مهارات جديدة.",
-
-        skillsTitle:
-          "المهارات والاهتمامات",
-
-        skillsSubtitle:
-          "اضغط على أي بطاقة لمعرفة المزيد",
-
-        skill1:
-          "Software",
-
-        skill1desc:
-          "اضغط لمعرفة المزيد",
-
-        skillHardware:
-          "Hardware",
-
-        hardwareDesc:
-          "اضغط لمعرفة المزيد",
-
-        skillProgramming:
-          "التعلم البرمجي",
-
-        programmingDesc:
-          "اضغط لمعرفة المزيد",
-
-        skillTechnology:
-          "التكنولوجيا",
-
-        technologyDesc:
-          "اضغط لمعرفة المزيد",
-
-        gamesTitle:
-          "ألعابي المفضلة",
-
-        gamesSubtitle:
-          "اضغط على اللعبة لاختيار المنصة",
-
-        minecraftDesc:
-          "اضغط لاختيار المنصة",
-
-        bloodstrikeDesc:
-          "اضغط لاختيار المنصة",
-
-        geometrydashDesc:
-          "اضغط لاختيار المنصة",
-
-        futureTitle:
-          "طموحي المستقبلي",
-
-        futureSubtitle:
-          "اضغط لمعرفة المزيد عن كل مجال",
-
-        futureCyber:
-          "الأمن السيبراني",
-
-        futureCyberDesc:
-          "تعرف على هذا المجال",
-
-        futureEngineering:
-          "هندسة المعلوماتية",
-
-        futureEngineeringDesc:
-          "تعرف على هذا المجال",
-
-        contactTitle:
-          "تواصل معي",
-
-        contactSubtitle:
-          "يمكنك التواصل معي عبر الطرق التالية",
-
-        callButton:
-          "📞 اتصال"
-
-      },
-
-      en: {
-
-        navHome: "Home",
-        navAbout: "About",
-        navSkills: "Skills",
-        navGames: "Games",
-        navFuture: "Future Goals",
-        navContact: "Contact",
-
-        badge:
-          "🚀 Welcome to my personal website",
-
-        heroDescription:
-          "Interested in technology and learning programming step by step while continuously developing my skills.",
-
-        heroSkills:
-          "Explore My Skills",
-
-        heroContact:
-          "Contact Me",
-
-        aboutTitle:
-          "About Me",
-
-        aboutSubtitle:
-          "My journey in technology and learning",
-
-        aboutText:
-          "I am interested in technology and software. I am learning programming step by step and continuously developing my skills.",
-
-        skillsTitle:
-          "Skills & Interests",
-
-        skillsSubtitle:
-          "Click any card to learn more",
-
-        skill1:
-          "Software",
-
-        skill1desc:
-          "Click to learn more",
-
-        skillHardware:
-          "Hardware",
-
-        hardwareDesc:
-          "Click to learn more",
-
-        skillProgramming:
-          "Programming Learning",
-
-        programmingDesc:
-          "Click to learn more",
-
-        skillTechnology:
-          "Technology",
-
-        technologyDesc:
-          "Click to learn more",
-
-        gamesTitle:
-          "My Favorite Games",
-
-        gamesSubtitle:
-          "Click a game to choose a platform",
-
-        minecraftDesc:
-          "Click to choose a platform",
-
-        bloodstrikeDesc:
-          "Click to choose a platform",
-
-        geometrydashDesc:
-          "Click to choose a platform",
-
-        futureTitle:
-          "Future Goals",
-
-        futureSubtitle:
-          "Click to learn more about each field",
-
-        futureCyber:
-          "Cybersecurity",
-
-        futureCyberDesc:
-          "Learn about this field",
-
-        futureEngineering:
-          "Information Engineering",
-
-        futureEngineeringDesc:
-          "Learn about this field",
-
-        contactTitle:
-          "Contact Me",
-
-        contactSubtitle:
-          "You can contact me using the following methods",
-
-        callButton:
-          "📞 Call"
-
-      }
-
-    };
-
-
-    function setLanguage(language) {
-
-      localStorage.setItem(
-        "portfolioLanguage",
-        language
-      );
-
-      applyLanguage(language);
-
-      document.getElementById(
-        "languageScreen"
-      ).style.display = "none";
-
-    }
-
-
-    function applyLanguage(language) {
-
-      const data = translations[language];
-
-      document.documentElement.lang = language;
-
-      document.documentElement.dir =
-        language === "ar" ? "rtl" : "ltr";
-
-
-      document.querySelectorAll(
-        "[data-key]"
-      ).forEach(element => {
-
-        const key =
-          element.getAttribute("data-key");
-
-        if (data[key]) {
-          element.textContent = data[key];
+        if (!game) {
+            return;
         }
 
-      });
+        document.getElementById("gameTitle").textContent = gameName;
+        document.getElementById("gameDescription").textContent = game.description;
 
+        document.getElementById("pcButton").href = game.pc;
+        document.getElementById("mobileButton").href = game.mobile;
+        document.getElementById("iphoneButton").href = game.iphone;
+        document.getElementById("samsungButton").href = game.samsung;
 
-      document.getElementById(
-        "heroName"
-      ).textContent =
-        language === "ar"
-          ? "محمد"
-          : "Mohammad";
-
-
-      document.getElementById(
-        "currentLanguage"
-      ).textContent =
-        language === "ar"
-          ? "English"
-          : "العربية";
-
+        document.getElementById("gameModal").classList.add("active");
     }
 
 
-    function toggleLanguage() {
-
-      const current =
-        localStorage.getItem(
-          "portfolioLanguage"
-        ) || "ar";
-
-
-      const newLanguage =
-        current === "ar" ? "en" : "ar";
-
-
-      localStorage.setItem(
-        "portfolioLanguage",
-        newLanguage
-      );
-
-
-      applyLanguage(
-        newLanguage
-      );
-
+    function closeGame() {
+        document.getElementById("gameModal").classList.remove("active");
     }
 
 
-    window.addEventListener(
-      "DOMContentLoaded",
-      () => {
+    document.getElementById("gameModal").addEventListener("click", function(event) {
 
-        const saved =
-          localStorage.getItem(
-            "portfolioLanguage"
-          );
-
-
-        if (saved) {
-
-          applyLanguage(saved);
-
-          document.getElementById(
-            "languageScreen"
-          ).style.display = "none";
-
+        if (event.target === this) {
+            closeGame();
         }
 
-      }
-    );
+    });
 
-  </script>
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+            closeGame();
+        }
+
+    });
+
+</script>
 
 </body>
 </html>
+```
