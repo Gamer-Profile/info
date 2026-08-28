@@ -1,262 +1,1287 @@
 <!DOCTYPE html>
-<html lang="ar">
+
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-    <meta name="description" content="موقع شخصي عن محمد، جيمر ومبرمج، يحتوي على مهاراته، برمجته، وألعابه المفضلة مثل ماين كرافت وفورت نايت.">
-    <meta name="keywords" content="محمد, جيمر, موقع تعريف محمد, برمجة, ألعاب, ماين كرافت, فورت نايت, ببجي, فري فاير">
-    <meta name="author" content="Mohammad">
+  <title>محمد | Portfolio</title>
 
-    <title>موقع تعريف محمد الجيمر — برمجة وألعاب</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
-            direction: rtl;
-            overflow-x: hidden;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        header {
-            text-align: center;
-            padding: 50px 20px 30px 20px;
-        }
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #07111f;
+      color: #ffffff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            animation: fadeInDown 2s;
-            color: #87CEFA;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        header p {
-            font-size: 1.2em;
-            color: #a0c4ff;
-            animation: fadeInUp 2s;
-            margin-top: 10px;
-        }
+    button {
+      font-family: inherit;
+    }
 
-        @keyframes fadeInDown {
-            from {opacity: 0; transform: translateY(-50px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 153, 255, 0.15), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(120, 0, 255, 0.12), transparent 30%);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        @keyframes fadeInUp {
-            from {opacity: 0; transform: translateY(50px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
+    /* Language Screen */
 
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            margin: 20px auto;
-            display: block;
-            animation: rotateImg 5s linear infinite;
-        }
+    #languageScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #07111f;
+      padding: 20px;
+    }
 
-        @keyframes rotateImg {
-            0% {transform: rotate(0deg);}
-            100% {transform: rotate(360deg);}
-        }
+    .language-box {
+      width: min(550px, 100%);
+      padding: 45px 30px;
+      text-align: center;
+      border-radius: 24px;
+      background: rgba(16, 30, 50, 0.95);
+      border: 1px solid rgba(0, 153, 255, 0.3);
+      box-shadow: 0 0 40px rgba(0, 153, 255, 0.15);
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
+    .language-logo {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 25px;
+      font-size: 34px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #008cff, #6d3cff);
+    }
 
-        nav button {
-            background: #ff4d6d;
-            border: none;
-            padding: 15px 25px;
-            margin: 10px;
-            font-size: 1em;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            color: #fff;
-            font-weight: bold;
-        }
+    .language-box h1 {
+      margin-bottom: 10px;
+    }
 
-        nav button:hover {
-            background: #6a11cb;
-            transform: scale(1.1);
-        }
+    .language-box p {
+      color: #aab7c7;
+      margin-bottom: 30px;
+    }
 
-        section {
-            padding: 40px 20px;
-            text-align: center;
-        }
+    .language-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #ffd700;
-        }
+    .language-btn,
+    .option-btn {
+      border: 1px solid rgba(0, 153, 255, 0.35);
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
 
-        section p, section ul {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
+    .language-btn {
+      min-width: 180px;
+    }
 
-        section ul {
-            list-style: none;
-            padding: 0;
-        }
+    .language-btn:hover,
+    .option-btn:hover {
+      transform: translateY(-4px);
+      background: rgba(0, 140, 255, 0.18);
+      border-color: #008cff;
+    }
 
-        section ul li {
-            background: rgba(255,255,255,0.1);
-            margin: 10px auto;
-            padding: 15px;
-            border-radius: 15px;
-            max-width: 400px;
-            transition: transform 0.3s, background 0.3s;
-        }
+    /* Navigation */
 
-        section ul li:hover {
-            transform: scale(1.05);
-            background: rgba(255,255,255,0.2);
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(7, 17, 31, 0.85);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-        /* ستايل الفورم الجديد */
-        #question form {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: right;
-        }
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
 
-        #question input, #question textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: none;
-            outline: none;
-        }
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
 
-        #question button {
-            background: #ff4d6d;
-            border: none;
-            padding: 12px 20px;
-            color: white;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+    .logo span {
+      color: #0099ff;
+    }
 
-        #question button:hover {
-            background: #6a11cb;
-            transform: scale(1.05);
-        }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.2);
-        }
+    .nav-links a {
+      color: #c5d0dc;
+      transition: 0.3s;
+    }
 
-        footer a {
-            color: #00fff7;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .nav-links a:hover {
+      color: #0099ff;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    .lang-switch {
+      border: none;
+      background: rgba(0, 140, 255, 0.15);
+      color: white;
+      padding: 9px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 80px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 50px;
+      margin-bottom: 25px;
+      color: #67baff;
+      background: rgba(0, 140, 255, 0.1);
+      border: 1px solid rgba(0, 140, 255, 0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(50px, 9vw, 90px);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #00a2ff, #8d5cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: #aab7c7;
+      line-height: 1.9;
+      font-size: 19px;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #008cff, #6445ff);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Sections */
+
+    section {
+      padding: 100px 25px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #9eabba;
+    }
+
+    /* About */
+
+    .about-card {
+      padding: 35px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #b8c4d0;
+      line-height: 2;
+    }
+
+    /* Cards */
+
+    .skills-grid,
+    .games-grid,
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .skill-card,
+    .game-card,
+    .future-card {
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 30px 22px;
+      border-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover,
+    .game-card:hover,
+    .future-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 153, 255, 0.6);
+      box-shadow: 0 18px 40px rgba(0, 140, 255, 0.12);
+    }
+
+    .skill-icon,
+    .game-icon,
+    .future-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3,
+    .game-card h3,
+    .future-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .skill-card p,
+    .game-card p,
+    .future-card p {
+      color: #aab7c7;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* Contact */
+
+    .contact-box {
+      text-align: center;
+      padding: 50px 25px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-info {
+      margin: 20px 0 30px;
+      color: #aab7c7;
+      line-height: 2;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      min-width: 170px;
+      padding: 15px;
+      border-radius: 13px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .phone {
+      background: #1687ff;
+    }
+
+    .whatsapp {
+      background: #128c7e;
+    }
+
+    .email {
+      background: #673de6;
+    }
+
+    /* Modal */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      width: min(650px, 100%);
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 35px;
+      border-radius: 24px;
+      background: #0d1b2a;
+      border: 1px solid rgba(0, 153, 255, 0.35);
+      position: relative;
+      animation: modalAnimation 0.3s ease;
+    }
+
+    @keyframes modalAnimation {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      inset-inline-end: 15px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-icon {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 18px;
+    }
+
+    .modal-content p {
+      color: #b7c4d1;
+      line-height: 1.9;
+      margin-bottom: 25px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 15px;
+    }
+
+    .option-btn {
+      display: block;
+      text-align: center;
+    }
+
+    .option-btn small {
+      display: block;
+      margin-top: 6px;
+      color: #9eabba;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: #778595;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    @media (max-width: 700px) {
+      .nav-container {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 11px;
+      }
+
+      .hero {
+        padding-top: 210px;
+      }
+
+      section {
+        padding: 75px 18px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+
 </head>
+
 <body>
 
-    <header>
-        <h1>موقع ويب تعريف عني</h1>
-        <p>اسمي: محمد<br>من: سوريا</p>
-        <img src="Gamer.png" alt="صورة محمد" class="profile-img">
-    </header>
+  <!-- Language Selection -->
 
-    <nav>
-        <button onclick="scrollToSection('skills')">مواهبي</button>
-        <button onclick="scrollToSection('tech')">مجال البرمجة والتكنولوجيا</button>
-        <button onclick="scrollToSection('games')">الألعاب المفضلة</button>
-        <button onclick="scrollToSection('question')">اسألني</button>
-        <button onclick="scrollToSection('contact')">التواصل معي</button>
-    </nav>
+  <div id="languageScreen">
+    <div class="language-box">
 
-    <section id="skills">
-        <h2>مواهبي</h2>
-        <ul>
-            <li>البرمجة بلغة JavaScript, Python, HTML & CSS</li>
-            <li>تصميم واجهات المستخدم UI/UX</li>
-            <li>تحليل وحل المشكلات التقنية</li>
-            <li>التعلم السريع واستكشاف تقنيات جديدة</li>
-        </ul>
-    </section>
+```
+  <div class="language-logo">M</div>
 
-    <section id="tech">
-        <h2>مجال البرمجة والتكنولوجيا</h2>
-        <ul>
-            <li>أنظمة الذكاء الاصطناعي</li>
-            <li>تطوير مواقع ويب ديناميكية</li>
-            <li>تطوير تطبيقات الهواتف المحمولة</li>
-            <li>استكشاف الألعاب والتقنيات الحديثة</li>
-        </ul>
-    </section>
+  <h1>اختر اللغة / Choose Language</h1>
 
-    <section id="games">
-        <h2>الألعاب المفضلة</h2>
-        <ul>
-            <li>ماين كرافت</li>
-            <li>فري فاير</li>
-            <li>فورت نايت</li>
-            <li>ببجي</li>
-        </ul>
-    </section>
+  <p>اختر اللغة التي تريد استخدامها</p>
 
-    <!-- قسم السؤال الجديد -->
-    <section id="question">
-        <h2>💬 اسألني</h2>
-        <p>يمكنك كتابة سؤالك وسأرد عليك قريباً!</p>
+  <div class="language-buttons">
+    <button class="language-btn" onclick="setLanguage('ar')">
+      🇸🇦 العربية
+    </button>
 
-        <form action="https://formspree.io/f/mykbodod" method="POST">
-            <label>الاسم:</label>
-            <input type="text" name="name" placeholder="اكتب اسمك" required>
+    <button class="language-btn" onclick="setLanguage('en')">
+      🇬🇧 English
+    </button>
+  </div>
 
-            <label>البريد الإلكتروني:</label>
-            <input type="email" name="email" placeholder="example@email.com" required>
+</div>
+```
 
-            <label>سؤالك:</label>
-            <textarea name="message" rows="5" placeholder="اكتب سؤالك هنا..." required></textarea>
+  </div>
 
-            <br>
-            <button type="submit">إرسال السؤال</button>
-        </form>
-    </section>
+  <!-- Navigation -->
 
-    <section id="contact">
-        <h2>التواصل معي</h2>
-        <p>يمكنك مراسلتي على البريد الإلكتروني:</p>
-        <p><a href="mailto:gamermohamaad2015@gmail.com" style="color:#00ff00; font-weight:bold;">gamermohamaad2015@gmail.com</a></p>
-    </section>
+  <nav>
+    <div class="nav-container">
 
-    <footer>
-        <p>جميع الحقوق والنشر محفوظة لجيمر</p>
-    </footer>
+```
+  <div class="logo">
+    <span>M</span>ohammad
+  </div>
 
-    <script>
-        function scrollToSection(id) {
-            const section = document.getElementById(id);
-            section.scrollIntoView({behavior: 'smooth'});
+  <div class="nav-links">
+    <a href="#home" data-key="navHome">الرئيسية</a>
+    <a href="#about" data-key="navAbout">عني</a>
+    <a href="#skills" data-key="navSkills">المهارات</a>
+    <a href="#games" data-key="navGames">ألعابي</a>
+    <a href="#future" data-key="navFuture">طموحي</a>
+    <a href="#contact" data-key="navContact">التواصل</a>
+
+    <button class="lang-switch" onclick="toggleLanguage()">
+      🌐 <span id="currentLanguage">English</span>
+    </button>
+  </div>
+
+</div>
+```
+
+  </nav>
+
+  <!-- Hero -->
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+```
+  <div class="badge" data-key="badge">
+    🚀 مرحبًا بك في موقعي الشخصي
+  </div>
+
+  <h1>
+    <span id="heroName">محمد</span>
+  </h1>
+
+  <p data-key="heroDescription">
+    مهتم بالتكنولوجيا وأتعلم البرمجة خطوة بخطوة.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="#skills" class="btn btn-primary" data-key="heroSkills">
+      استكشف مهاراتي
+    </a>
+
+    <a href="#contact" class="btn btn-secondary" data-key="heroContact">
+      تواصل معي
+    </a>
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- About -->
+
+  <section id="about">
+    <div class="container">
+
+```
+  <div class="section-title">
+    <h2 data-key="aboutTitle">عني</h2>
+    <p data-key="aboutSubtitle">رحلتي في التكنولوجيا والتعلم</p>
+  </div>
+
+  <div class="about-card" data-key="aboutText">
+    أنا مهتم بعالم التكنولوجيا، ولدي اهتمام وخبرة في مجال Software،
+    وأتعلم البرمجة وأطور مهاراتي خطوة بخطوة.
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- Skills -->
+
+  <section id="skills">
+    <div class="container">
+
+```
+  <div class="section-title">
+    <h2 data-key="skillsTitle">المهارات والاهتمامات</h2>
+    <p data-key="skillsSubtitle">اضغط على أي بطاقة لمعرفة المزيد</p>
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="skill-card" onclick="openInfo('software')">
+      <div class="skill-icon">💻</div>
+      <h3 data-key="skill1">Software</h3>
+      <p data-key="skill1desc">اضغط لمعرفة المزيد</p>
+    </div>
+
+    <div class="skill-card" onclick="openInfo('hardware')">
+      <div class="skill-icon">🖥️</div>
+      <h3 data-key="skillHardware">Hardware</h3>
+      <p data-key="hardwareDesc">اضغط لمعرفة المزيد</p>
+    </div>
+
+    <div class="skill-card" onclick="openInfo('programming')">
+      <div class="skill-icon">👨‍💻</div>
+      <h3 data-key="skillProgramming">التعلم البرمجي</h3>
+      <p data-key="programmingDesc">اضغط لمعرفة المزيد</p>
+    </div>
+
+    <div class="skill-card" onclick="openInfo('technology')">
+      <div class="skill-icon">⚙️</div>
+      <h3 data-key="skillTechnology">التكنولوجيا</h3>
+      <p data-key="technologyDesc">اضغط لمعرفة المزيد</p>
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- Games -->
+
+  <section id="games">
+    <div class="container">
+
+```
+  <div class="section-title">
+    <h2 data-key="gamesTitle">ألعابي المفضلة</h2>
+    <p data-key="gamesSubtitle">اضغط على اللعبة لاختيار المنصة</p>
+  </div>
+
+  <div class="games-grid">
+
+    <div class="game-card" onclick="openGame('minecraft')">
+      <div class="game-icon">⛏️</div>
+      <h3>Minecraft</h3>
+      <p data-key="minecraftDesc">اضغط لاختيار المنصة</p>
+    </div>
+
+    <div class="game-card" onclick="openGame('bloodstrike')">
+      <div class="game-icon">🎯</div>
+      <h3>Blood Strike</h3>
+      <p data-key="bloodstrikeDesc">اضغط لاختيار المنصة</p>
+    </div>
+
+    <div class="game-card" onclick="openGame('geometrydash')">
+      <div class="game-icon">🟨</div>
+      <h3>Geometry Dash</h3>
+      <p data-key="geometrydashDesc">اضغط لاختيار المنصة</p>
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- Future -->
+
+  <section id="future">
+    <div class="container">
+
+```
+  <div class="section-title">
+    <h2 data-key="futureTitle">طموحي المستقبلي</h2>
+    <p data-key="futureSubtitle">اضغط لمعرفة المزيد عن كل مجال</p>
+  </div>
+
+  <div class="future-grid">
+
+    <div class="future-card" onclick="openInfo('cybersecurity')">
+      <div class="future-icon">🔐</div>
+      <h3 data-key="futureCyber">الأمن السيبراني</h3>
+      <p data-key="futureCyberDesc">
+        تعرف على هذا المجال
+      </p>
+    </div>
+
+    <div class="future-card" onclick="openInfo('engineering')">
+      <div class="future-icon">💻</div>
+      <h3 data-key="futureEngineering">
+        هندسة المعلوماتية
+      </h3>
+      <p data-key="futureEngineeringDesc">
+        تعرف على هذا المجال
+      </p>
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- Contact -->
+
+  <section id="contact">
+    <div class="container">
+
+```
+  <div class="contact-box">
+
+    <div class="section-title">
+      <h2 data-key="contactTitle">تواصل معي</h2>
+      <p data-key="contactSubtitle">
+        يمكنك التواصل معي عبر الطرق التالية
+      </p>
+    </div>
+
+    <div class="contact-info">
+      <p>📞 +971541787173</p>
+      <p>📧 gamermohamaad2015@gmail.com</p>
+    </div>
+
+    <div class="contact-buttons">
+
+      <a href="tel:+971541787173"
+         class="contact-btn phone"
+         data-key="callButton">
+        📞 اتصال
+      </a>
+
+      <a href="https://wa.me/971541787173"
+         target="_blank"
+         class="contact-btn whatsapp">
+        💬 WhatsApp
+      </a>
+
+      <a href="mailto:gamermohamaad2015@gmail.com"
+         class="contact-btn email">
+        📧 Email
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <footer>
+    <p id="footerText">
+      © 2026 محمد - جميع الحقوق محفوظة
+    </p>
+  </footer>
+
+  <!-- Modal -->
+
+  <div class="modal" id="modal">
+
+```
+<div class="modal-content">
+
+  <button class="close-modal" onclick="closeModal()">
+    ×
+  </button>
+
+  <div id="modalBody"></div>
+
+</div>
+```
+
+  </div>
+
+  <script>
+
+    const modal = document.getElementById("modal");
+    const modalBody = document.getElementById("modalBody");
+
+    function closeModal() {
+      modal.classList.remove("active");
+    }
+
+    modal.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+
+    /* Information Cards */
+
+    const infoData = {
+
+      software: {
+        icon: "💻",
+        title: "Software",
+        text:
+          "Software يعني البرامج والتطبيقات التي تعمل على الكمبيوتر أو الهاتف. مثل المتصفحات، الألعاب، أنظمة التشغيل والتطبيقات."
+      },
+
+      hardware: {
+        icon: "🖥️",
+        title: "Hardware",
+        text:
+          "Hardware يعني الأجزاء المادية التي يمكنك لمسها في الجهاز، مثل المعالج CPU، الرام RAM، الشاشة، لوحة المفاتيح والقرص."
+      },
+
+      programming: {
+        icon: "👨‍💻",
+        title: "Programming",
+        text:
+          "البرمجة هي كتابة تعليمات وأوامر للكمبيوتر باستخدام لغات برمجة لإنشاء مواقع وتطبيقات وألعاب وبرامج."
+      },
+
+      technology: {
+        icon: "⚙️",
+        title: "Technology",
+        text:
+          "التكنولوجيا تشمل الأجهزة والبرامج والشبكات والأنظمة التي نستخدمها لحل المشاكل وتطوير حياتنا."
+      },
+
+      cybersecurity: {
+        icon: "🔐",
+        title: "Cybersecurity",
+        text:
+          "الأمن السيبراني يهتم بحماية الأنظمة والشبكات والبيانات من المخاطر الرقمية. يعتمد على فهم الشبكات والأنظمة والبرمجة."
+      },
+
+      engineering: {
+        icon: "💻",
+        title: "Information Engineering",
+        text:
+          "هندسة المعلوماتية مجال واسع يشمل البرمجة والأنظمة والشبكات وقواعد البيانات والتقنيات المختلفة."
+      }
+
+    };
+
+
+    function openInfo(type) {
+
+      const item = infoData[type];
+
+      modalBody.innerHTML = `
+        <div class="modal-icon">${item.icon}</div>
+        <h2>${item.title}</h2>
+        <p>${item.text}</p>
+      `;
+
+      modal.classList.add("active");
+
+    }
+
+
+    /* Games */
+
+    const games = {
+
+      minecraft: {
+        icon: "⛏️",
+        name: "Minecraft"
+      },
+
+      bloodstrike: {
+        icon: "🎯",
+        name: "Blood Strike"
+      },
+
+      geometrydash: {
+        icon: "🟨",
+        name: "Geometry Dash"
+      }
+
+    };
+
+
+    function openGame(game) {
+
+      const selectedGame = games[game];
+
+      modalBody.innerHTML = `
+        <div class="modal-icon">
+          ${selectedGame.icon}
+        </div>
+
+        <h2>${selectedGame.name}</h2>
+
+        <p>
+          اختر المنصة التي تريد معرفة طريقة الحصول على اللعبة من خلالها.
+        </p>
+
+        <div class="options-grid">
+
+          <a class="option-btn"
+             href="https://store.steampowered.com"
+             target="_blank">
+            🖥️ PC
+            <small>Steam</small>
+          </a>
+
+          <a class="option-btn"
+             href="https://play.google.com/store"
+             target="_blank">
+            📱 Android
+            <small>Google Play</small>
+          </a>
+
+          <a class="option-btn"
+             href="https://www.apple.com/app-store/"
+             target="_blank">
+            🍎 iPhone
+            <small>App Store</small>
+          </a>
+
+          <a class="option-btn"
+             href="https://www.samsung.com"
+             target="_blank">
+            📱 Samsung
+            <small>Galaxy Store / Google Play</small>
+          </a>
+
+        </div>
+      `;
+
+      modal.classList.add("active");
+
+    }
+
+
+    /* Language */
+
+    const translations = {
+
+      ar: {
+
+        navHome: "الرئيسية",
+        navAbout: "عني",
+        navSkills: "المهارات",
+        navGames: "ألعابي",
+        navFuture: "طموحي",
+        navContact: "التواصل",
+
+        badge:
+          "🚀 مرحبًا بك في موقعي الشخصي",
+
+        heroDescription:
+          "مهتم بالتكنولوجيا وأتعلم البرمجة خطوة بخطوة، وأسعى دائمًا إلى تطوير مهاراتي.",
+
+        heroSkills:
+          "استكشف مهاراتي",
+
+        heroContact:
+          "تواصل معي",
+
+        aboutTitle:
+          "عني",
+
+        aboutSubtitle:
+          "رحلتي في عالم التكنولوجيا والتعلم",
+
+        aboutText:
+          "أنا مهتم بعالم التكنولوجيا ولدي اهتمام وخبرة في مجال Software. أتعلم البرمجة خطوة بخطوة وأسعى باستمرار إلى تطوير نفسي واكتساب مهارات جديدة.",
+
+        skillsTitle:
+          "المهارات والاهتمامات",
+
+        skillsSubtitle:
+          "اضغط على أي بطاقة لمعرفة المزيد",
+
+        skill1:
+          "Software",
+
+        skill1desc:
+          "اضغط لمعرفة المزيد",
+
+        skillHardware:
+          "Hardware",
+
+        hardwareDesc:
+          "اضغط لمعرفة المزيد",
+
+        skillProgramming:
+          "التعلم البرمجي",
+
+        programmingDesc:
+          "اضغط لمعرفة المزيد",
+
+        skillTechnology:
+          "التكنولوجيا",
+
+        technologyDesc:
+          "اضغط لمعرفة المزيد",
+
+        gamesTitle:
+          "ألعابي المفضلة",
+
+        gamesSubtitle:
+          "اضغط على اللعبة لاختيار المنصة",
+
+        minecraftDesc:
+          "اضغط لاختيار المنصة",
+
+        bloodstrikeDesc:
+          "اضغط لاختيار المنصة",
+
+        geometrydashDesc:
+          "اضغط لاختيار المنصة",
+
+        futureTitle:
+          "طموحي المستقبلي",
+
+        futureSubtitle:
+          "اضغط لمعرفة المزيد عن كل مجال",
+
+        futureCyber:
+          "الأمن السيبراني",
+
+        futureCyberDesc:
+          "تعرف على هذا المجال",
+
+        futureEngineering:
+          "هندسة المعلوماتية",
+
+        futureEngineeringDesc:
+          "تعرف على هذا المجال",
+
+        contactTitle:
+          "تواصل معي",
+
+        contactSubtitle:
+          "يمكنك التواصل معي عبر الطرق التالية",
+
+        callButton:
+          "📞 اتصال"
+
+      },
+
+      en: {
+
+        navHome: "Home",
+        navAbout: "About",
+        navSkills: "Skills",
+        navGames: "Games",
+        navFuture: "Future Goals",
+        navContact: "Contact",
+
+        badge:
+          "🚀 Welcome to my personal website",
+
+        heroDescription:
+          "Interested in technology and learning programming step by step while continuously developing my skills.",
+
+        heroSkills:
+          "Explore My Skills",
+
+        heroContact:
+          "Contact Me",
+
+        aboutTitle:
+          "About Me",
+
+        aboutSubtitle:
+          "My journey in technology and learning",
+
+        aboutText:
+          "I am interested in technology and software. I am learning programming step by step and continuously developing my skills.",
+
+        skillsTitle:
+          "Skills & Interests",
+
+        skillsSubtitle:
+          "Click any card to learn more",
+
+        skill1:
+          "Software",
+
+        skill1desc:
+          "Click to learn more",
+
+        skillHardware:
+          "Hardware",
+
+        hardwareDesc:
+          "Click to learn more",
+
+        skillProgramming:
+          "Programming Learning",
+
+        programmingDesc:
+          "Click to learn more",
+
+        skillTechnology:
+          "Technology",
+
+        technologyDesc:
+          "Click to learn more",
+
+        gamesTitle:
+          "My Favorite Games",
+
+        gamesSubtitle:
+          "Click a game to choose a platform",
+
+        minecraftDesc:
+          "Click to choose a platform",
+
+        bloodstrikeDesc:
+          "Click to choose a platform",
+
+        geometrydashDesc:
+          "Click to choose a platform",
+
+        futureTitle:
+          "Future Goals",
+
+        futureSubtitle:
+          "Click to learn more about each field",
+
+        futureCyber:
+          "Cybersecurity",
+
+        futureCyberDesc:
+          "Learn about this field",
+
+        futureEngineering:
+          "Information Engineering",
+
+        futureEngineeringDesc:
+          "Learn about this field",
+
+        contactTitle:
+          "Contact Me",
+
+        contactSubtitle:
+          "You can contact me using the following methods",
+
+        callButton:
+          "📞 Call"
+
+      }
+
+    };
+
+
+    function setLanguage(language) {
+
+      localStorage.setItem(
+        "portfolioLanguage",
+        language
+      );
+
+      applyLanguage(language);
+
+      document.getElementById(
+        "languageScreen"
+      ).style.display = "none";
+
+    }
+
+
+    function applyLanguage(language) {
+
+      const data = translations[language];
+
+      document.documentElement.lang = language;
+
+      document.documentElement.dir =
+        language === "ar" ? "rtl" : "ltr";
+
+
+      document.querySelectorAll(
+        "[data-key]"
+      ).forEach(element => {
+
+        const key =
+          element.getAttribute("data-key");
+
+        if (data[key]) {
+          element.textContent = data[key];
         }
-    </script>
+
+      });
+
+
+      document.getElementById(
+        "heroName"
+      ).textContent =
+        language === "ar"
+          ? "محمد"
+          : "Mohammad";
+
+
+      document.getElementById(
+        "currentLanguage"
+      ).textContent =
+        language === "ar"
+          ? "English"
+          : "العربية";
+
+    }
+
+
+    function toggleLanguage() {
+
+      const current =
+        localStorage.getItem(
+          "portfolioLanguage"
+        ) || "ar";
+
+
+      const newLanguage =
+        current === "ar" ? "en" : "ar";
+
+
+      localStorage.setItem(
+        "portfolioLanguage",
+        newLanguage
+      );
+
+
+      applyLanguage(
+        newLanguage
+      );
+
+    }
+
+
+    window.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const saved =
+          localStorage.getItem(
+            "portfolioLanguage"
+          );
+
+
+        if (saved) {
+
+          applyLanguage(saved);
+
+          document.getElementById(
+            "languageScreen"
+          ).style.display = "none";
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
